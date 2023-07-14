@@ -1,0 +1,19 @@
+{
+  "name": "eticaret-backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "npx tsc && node index.js"
+  },
+  "author": "mustafa",
+  "license": "ISC",
+  "dependencies": {
+    "fastify": "^4.19.2",
+    "fastify-sqlite": "^1.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.4.2",
+    "typescript": "^5.1.6"
+  }
+}
