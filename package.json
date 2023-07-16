@@ -9,6 +9,7 @@
   "author": "mustafa",
   "license": "ISC",
   "dependencies": {
+    "@fastify/mongodb": "^7.0.0",
     "fastify": "^4.19.2",
     "fastify-sqlite": "^1.1.0"
   },
