@@ -12,19 +12,27 @@ fastify.register(require('@fastify/cors'), {
   maxAge: 0
 })
 
-fastify.get("/getproducts", async function (req:any, res:any) {
+fastify.get("/getAllProducts", async function (req:any, res:any) {
   var products = fastify.mongo.db.collection('products');
   let p = await products.find().toArray();
-  console.log(p)
   res.send(p)
 });
 
-fastify.post("/getproduct", async function (req:any, res:any) {
+fastify.post("/getProduct", async function (req:any, res:any) {
   var products = fastify.mongo.db.collection('products');
-  console.log(req.body)
   let p = await products.findOne({_id:new ObjectId(req.body.productid)});
-  console.log(p)
   res.send(p)
+});
+
+fastify.post("/getProducts", async function (req:any, res:any) {
+  console.log(req.body)
+  var products = fastify.mongo.db.collection('products');
+  let ps = [];
+  for(let i = 0; i < req.body.products.length; i++) {
+    console.log(i, req.body.products[i])
+    ps.push(await products.findOne({_id:new ObjectId(req.body.products[i])}));
+  }
+  res.send({products:ps})
 });
 
 fastify.listen({ port: 3000 }, (err:any) => {
